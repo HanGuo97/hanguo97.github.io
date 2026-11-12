@@ -1,3 +1,6 @@
+// Paper figures are kept in index.html but hidden. Set to true to show them again.
+const SHOW_PAPER_FIGURES = false;
+
 function createProjectElement(id, project){
     /* Create an element in Project
     tag: some tags
@@ -23,6 +26,13 @@ function createProjectElement(id, project){
       <br>
       ${project.others}`
 
-    document.getElementById(id + "-img").innerHTML = html_img;
-    document.getElementById(id + "-txt").innerHTML = html_txt;
+    const imgCell = document.getElementById(id + "-img");
+    const txtCell = document.getElementById(id + "-txt");
+    if (SHOW_PAPER_FIGURES) {
+        imgCell.innerHTML = html_img;
+    } else {
+        imgCell.hidden = true;
+        txtCell.width = "100%";
+    }
+    txtCell.innerHTML = html_txt;
 }
